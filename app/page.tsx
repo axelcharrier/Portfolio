@@ -1,65 +1,105 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-white">
+      {/* Section Bienvenue */}
+      <section className="relative flex min-h-screen items-center justify-center px-6 py-20 md:px-12 lg:px-24">
+        <div className="max-w-4xl w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            {/* Petit accent orange */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "60px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="h-1 bg-orange-500"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+            {/* Titre principal avec Inter */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="font-[var(--font-inter)] text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight tracking-tight"
+            >
+              Bonjour,
+              <br />
+              <span className="text-gray-600">
+                je suis <span className="text-black">Axel</span>
+              </span>
+            </motion.h1>
+
+            {/* Description avec Libre Baskerville */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="font-[var(--font-libre-baskerville)] text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed"
+            >
+              Développeur passionné par la création d'expériences web modernes et
+              performantes. Je transforme des idées en solutions digitales élégantes
+              et fonctionnelles.
+            </motion.p>
+
+            {/* Call to action */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
+              <motion.a
+                href="#projets"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-sm transition-colors hover:bg-gray-800 text-sm font-medium tracking-wide"
+              >
+                Découvrir mes projets
+              </motion.a>
+
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black rounded-sm transition-all hover:bg-black hover:text-white text-sm font-medium tracking-wide"
+              >
+                Me contacter
+              </motion.a>
+            </motion.div>
+          </motion.div>
+
+          {/* Indicateur de scroll avec animation subtile */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2"
           >
-            Documentation
-          </a>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="flex flex-col items-center gap-2"
+            >
+              <span className="font-[var(--font-inter)] text-xs text-gray-400 uppercase tracking-widest">
+                Scroll
+              </span>
+              <div className="w-px h-12 bg-gradient-to-b from-orange-500 to-transparent" />
+            </motion.div>
+          </motion.div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
