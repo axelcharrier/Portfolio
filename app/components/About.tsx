@@ -51,7 +51,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="h-1 bg-orange-500"
             />
-            <h2 className="font-[var(--font-inter)] text-4xl md:text-5xl font-bold text-black leading-tight tracking-tight">
+            <h2 className="font-[var(--font-inter)] text-4xl md:text-5xl text-black leading-tight tracking-tight">
               À propos<br /><span className="text-gray-600">de moi</span>
             </h2>
             <div className="space-y-4">
@@ -85,7 +85,7 @@ export default function About() {
                       <card.icon />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="font-[var(--font-inter)] text-lg font-semibold text-black">{card.title}</h3>
+                      <h3 className="font-[var(--font-inter)] text-lg text-black">{card.title}</h3>
                       <p className="font-[var(--font-libre-baskerville)] text-gray-600 text-sm leading-relaxed">{card.description}</p>
                     </div>
                   </div>

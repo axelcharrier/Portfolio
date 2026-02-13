@@ -25,7 +25,7 @@ export default function Welcome() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-[var(--font-inter)] text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight tracking-tight"
+            className="font-[var(--font-inter)] text-5xl md:text-6xl lg:text-7xl text-black leading-tight tracking-tight"
           >
             Bonjour,
             <br />
@@ -57,7 +57,7 @@ export default function Welcome() {
               href="#projets"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-sm transition-colors hover:bg-gray-800 text-sm font-medium tracking-wide"
+              className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-sm transition-colors hover:bg-gray-800 text-sm tracking-wide"
             >
               Découvrir mes projets
             </motion.a>
@@ -66,7 +66,7 @@ export default function Welcome() {
               href="#contact"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black rounded-sm transition-all hover:bg-black hover:text-white text-sm font-medium tracking-wide"
+              className="font-[var(--font-inter)] inline-flex items-center justify-center px-8 py-4 border-2 border-black text-black rounded-sm transition-all hover:bg-black hover:text-white text-sm tracking-wide"
             >
               Me contacter
             </motion.a>
