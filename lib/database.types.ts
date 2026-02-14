@@ -1,4 +1,12 @@
-export type Database = {
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[];
+
+export interface Database {
   public: {
     Tables: {
       Project: {
@@ -35,6 +43,7 @@ export type Database = {
           createdAt?: string;
           updatedAt?: string;
         };
+        Relationships: [];
       };
       ProjectTechnology: {
         Row: {
@@ -52,6 +61,20 @@ export type Database = {
           projectId?: string;
           technologyId?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "ProjectTechnology_projectId_fkey";
+            columns: ["projectId"];
+            referencedRelation: "Project";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "ProjectTechnology_technologyId_fkey";
+            columns: ["technologyId"];
+            referencedRelation: "Technology";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       Technology: {
         Row: {
@@ -78,6 +101,7 @@ export type Database = {
           createdAt?: string;
           updatedAt?: string;
         };
+        Relationships: [];
       };
       User: {
         Row: {
@@ -104,10 +128,20 @@ export type Database = {
           createdAt?: string;
           updatedAt?: string;
         };
+        Relationships: [];
       };
     };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
   };
-};
+}
 
 // Types utilitaires pour faciliter l'utilisation
 export type Project = Database['public']['Tables']['Project']['Row'];
@@ -119,4 +153,3 @@ export type User = Database['public']['Tables']['User']['Row'];
 export type ProjectWithTechnologies = Project & {
   technologies: Technology[];
 };
-
