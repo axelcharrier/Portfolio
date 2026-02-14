@@ -1,10 +1,19 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getSession } from "@/lib/auth";
+import LogoutButton from "./LogoutButton";
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Sidebar */}
@@ -30,10 +39,14 @@ export default function AdminLayout({
             Technologies
           </Link>
         </nav>
-        <div className="absolute bottom-6 left-6">
+        <div className="absolute bottom-6 left-6 right-6 space-y-4">
+          <div className="text-sm text-gray-400">
+            Connecté : {session.name || session.email}
+          </div>
+          <LogoutButton />
           <Link
             href="/"
-            className="text-gray-400 hover:text-white transition-colors text-sm"
+            className="block text-gray-400 hover:text-white transition-colors text-sm"
           >
             ← Retour au site
           </Link>
@@ -45,4 +58,3 @@ export default function AdminLayout({
     </div>
   );
 }
-
