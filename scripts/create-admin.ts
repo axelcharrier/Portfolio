@@ -2,6 +2,7 @@
 // Exécuter avec: npx ts-node --esm scripts/create-admin.ts
 
 import bcrypt from "bcryptjs";
+import { v4 as uuidv4 } from "uuid";
 
 const password = "@Xel"; // Changez ce mot de passe
 
@@ -11,7 +12,7 @@ async function main() {
   console.log("\n=== Créer un utilisateur admin dans Supabase ===\n");
   console.log("Allez dans Supabase > Table Editor > User");
   console.log("Cliquez sur 'Insert row' et utilisez ces valeurs:\n");
-  console.log("id:", crypto.randomUUID());
+  console.log("id:", uuidv4());
   console.log("email: admin@example.com");
   console.log("password:", hash);
   console.log("name: Admin");
@@ -21,4 +22,3 @@ async function main() {
 }
 
 main();
-

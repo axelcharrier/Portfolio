@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { Project, Technology } from "@/lib/database.types";
+import Link from 'next/link'
+import { v4 as uuidv4 } from "uuid";
 
 interface ProjectFormProps {
   project?: Project;
@@ -40,7 +42,7 @@ export default function ProjectForm({
 
     try {
       const now = new Date().toISOString();
-      const projectId = project?.id ?? crypto.randomUUID();
+      const projectId = project?.id ?? uuidv4();
 
       if (isEditing) {
         // Update project
@@ -78,7 +80,7 @@ export default function ProjectForm({
       // Insert project technologies
       if (selectedTechIds.length > 0) {
         const projectTechnologies = selectedTechIds.map((techId) => ({
-          id: crypto.randomUUID(),
+          id: uuidv4(),
           projectId,
           technologyId: techId,
         }));
@@ -251,6 +253,7 @@ export default function ProjectForm({
         ) : (
           <p className="text-sm text-gray-600">
             Aucune technologie disponible.{" "}
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/admin/technologies" className="text-orange-500">
               Créez-en une
             </a>

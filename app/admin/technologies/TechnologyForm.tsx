@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import type { Technology } from "@/lib/database.types";
+import { v4 as uuidv4 } from "uuid";
 
 interface TechnologyFormProps {
   technology?: Technology;
@@ -49,7 +50,7 @@ export default function TechnologyForm({ technology }: TechnologyFormProps) {
       }
     } else {
       const { error: insertError } = await supabase.from("Technology").insert({
-        id: crypto.randomUUID(),
+        id: uuidv4(),
         name: formData.name,
         icon: formData.icon || null,
         category: formData.category || null,
@@ -160,4 +161,3 @@ export default function TechnologyForm({ technology }: TechnologyFormProps) {
     </form>
   );
 }
-
