@@ -1,6 +1,7 @@
 import Welcome from "./components/Welcome";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 import { supabase } from "@/lib/supabase";
 
 async function getProjects() {
@@ -57,6 +58,7 @@ export default async function Home() {
       <Welcome />
       <About />
       <Projects projects={projects} />
+      <Contact />
     </div>
   );
 }
