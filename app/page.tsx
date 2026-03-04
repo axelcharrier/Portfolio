@@ -2,7 +2,6 @@ import Welcome from "./components/Welcome";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import { supabase } from "@/lib/supabase";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "@/lib/database.types";
 
@@ -77,6 +76,7 @@ export default async function Home() {
       <Welcome />
       <About />
       <Projects projects={projects} />
+        <Contact />
     </div>
   );
 }
