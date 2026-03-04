@@ -3,8 +3,27 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import { supabase } from "@/lib/supabase";
+import { createClient } from "@supabase/supabase-js";
+import { Database } from "@/lib/database.types";
+
+export const revalidate = 0;
+
+function createFreshClient() {
+  return createClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      global: {
+        fetch: (url, options) =>
+          fetch(url, { ...options, cache: "no-store" }),
+      },
+    }
+  );
+}
 
 async function getProjects() {
+  const supabase = createFreshClient();
+
   // Récupérer les projets featured, triés par order
   const { data: projects, error } = await supabase
     .from("Project")
@@ -58,7 +77,6 @@ export default async function Home() {
       <Welcome />
       <About />
       <Projects projects={projects} />
-      <Contact />
     </div>
   );
 }
